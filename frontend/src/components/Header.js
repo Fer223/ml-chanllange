@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { fetchSearchResults } from '../redux/thunks/resultsThunk';
+import { useDispatch } from 'react-redux';
 
 import './Header.scss';
 
 export default function Header() {
     const history = useHistory();
     const [ searchValue, setSearchValue ] = useState('');
+    const dispatch = useDispatch();
 
     function handleInputChange(event) {
         event.preventDefault();
@@ -14,6 +17,7 @@ export default function Header() {
 
     function handleFormSubmit(event) {
         event.preventDefault();
+        dispatch(fetchSearchResults(searchValue));
     }
 
     return (
