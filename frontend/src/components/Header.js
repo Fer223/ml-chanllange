@@ -18,11 +18,12 @@ export default function Header() {
     function handleFormSubmit(event) {
         event.preventDefault();
         dispatch(fetchSearchResults(searchValue));
+        history.push('/search-results');
     }
 
     return (
         <form className="header" onSubmit={handleFormSubmit}>
-            <img className="header__logo" src="/images/Logo_ML.png" />
+            <img className="header__logo" src="/images/Logo_ML.png" alt="logo" />
             <input className="header__search-bar" onChange={handleInputChange} value={searchValue} ></input>
         </form>
     );

@@ -1,8 +1,7 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useHistory
+  Route
 } from "react-router-dom";
 import SearchResults from './components/SearchResults';
 import ItemDetails from './components/ItemDetails';
@@ -10,7 +9,6 @@ import Header from './components/Header';
 import './App.css';
 
 function App() {
-  const history = useHistory();
 
   return (
     <Router>

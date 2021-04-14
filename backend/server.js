@@ -19,13 +19,22 @@ app.get('/items', (req, res) => {
 })
 
 app.get('/items/:id/description', (req, res) => {
-    axios({
+    const descriptionApiCall = axios({
         method: 'get',
         url: `https://api.mercadolibre.com/items/${req['params'].id}/description`,
-        responseType: 'stream'
-    }).then(response => {
-        response.data.pipe(res);
-    })
+    });
+    const itemApiCall = axios({
+        method: 'get',
+        url: `https://api.mercadolibre.com/items/${req['params'].id}`,
+    });
+
+    axios.all([descriptionApiCall, itemApiCall])
+        .then(
+            axios.spread((...responses) => {
+                responses[0].data.pictures = responses[1].data.pictures;
+                res.send(responses[0].data);
+            })
+        );
 })
 
 app.listen(PORT, () => {

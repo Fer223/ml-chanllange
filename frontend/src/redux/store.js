@@ -1,4 +1,7 @@
 import { resultsReducer } from './reducers/resultsReducer';
-import { configureStore } from '@reduxjs/toolkit';
+import { detailsReducer } from './reducers/detailsReducer';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-export const store = configureStore({reducer: resultsReducer});
+const rootReducer = combineReducers({ results: resultsReducer, details: detailsReducer });
+
+export const store = configureStore({reducer: rootReducer});

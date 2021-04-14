@@ -1,0 +1,40 @@
+.product-card {
+    width: 80rem;
+    height: 10rem;
+    background-color: white;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+
+    &__image {
+        width: 8rem;
+        height: 8rem;
+        margin: 1rem;
+        border-radius: 4px;
+    }
+
+    &__details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .details {
+
+            &__information {
+
+                div {
+                    margin: 1rem;
+                    max-width: 30rem;
+                }
+            
+                img {
+                    margin-left: 1rem;
+                    vertical-align: middle;
+                }
+            }
+
+            &__location {
+                margin: 4rem;
+            }
+        }
+    }
+}
